@@ -1,0 +1,67 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Line2D",
+"class": "BasicLightningLine2d",
+"language": "GDScript",
+"path": "res://addons/DrunkBull.SuperLightning/src/main/BasicLightningLine2d.gd"
+} ]
+_global_script_class_icons={
+"BasicLightningLine2d": ""
+}
+
+[application]
+
+config/name="Shatter That Word"
+run/main_scene="res://Main.tscn"
+boot_splash/image="res://texture/splash.png"
+boot_splash/bg_color=Color( 1, 1, 1, 1 )
+config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
+
+[debug]
+
+settings/stdout/verbose_stdout=true
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/DrunkBull.SuperLightning/plugin.cfg" )
+
+[filesystem]
+
+import/fbx/use_fbx=false
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[locale]
+
+translations=PoolStringArray( "res://local.en.translation", "res://local.zh.translation" )
+locale_filter=[ 0, [ "en", "zh" ] ]
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"

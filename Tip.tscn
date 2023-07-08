@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Tip.gd" type="Script" id=1]
+[ext_resource path="res://ui/fonts/JetBrainsMono[wght].ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://ui/fonts/SourceHanSansCN-Medium.otf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 2 )
+fallback/0 = ExtResource( 3 )
+
+[node name="Tip" type="Node2D"]
+position = Vector2( 160, 580 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 1042.0
+margin_bottom = 86.0
+custom_fonts/font = SubResource( 1 )
+text = "Chinese中文"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

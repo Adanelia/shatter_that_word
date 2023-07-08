@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ui/fonts/JetBrainsMono[wght].ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://ui/fonts/SourceHanSansCN-Medium.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://ui/clickable_url.gd" type="Script" id=3]
+[ext_resource path="res://ui/Blur.tscn" type="PackedScene" id=4]
+
+[sub_resource type="GDScript" id=18]
+script/source = "extends PopupDialog
+
+
+func _on_Button_pressed():
+	hide()
+"
+
+[sub_resource type="DynamicFont" id=17]
+size = 32
+font_data = ExtResource( 1 )
+fallback/0 = ExtResource( 2 )
+
+[node name="PrivacyNotice" type="PopupDialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -400.0
+margin_top = -200.0
+margin_right = 400.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 800, 400 )
+popup_exclusive = true
+script = SubResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blur" parent="." instance=ExtResource( 4 )]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_right = 800.0
+margin_bottom = 376.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/CenterContainer"]
+margin_left = 40.0
+margin_top = 48.0
+margin_right = 760.0
+margin_bottom = 328.0
+rect_min_size = Vector2( 720, 280 )
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 17 )
+bbcode_enabled = true
+bbcode_text = "[center]温馨提示[/center]
+
+欢迎您使用百词斩(bushi)！我们非常重视保护您的个人信息和隐私。您可以通过[color=blue][url=https://adanelia.github.io/privacy_policy/games/word_zh.html]《百词斩(bushi)隐私政策》[/url][/color]了解我们收集、使用、存储用户个人信息的情况，以及您所享有的相关权利。请您仔细阅读并充分理解相关内容：
+
+1. 为向您提供游戏服务，我们将依据[color=blue][url=https://adanelia.github.io/privacy_policy/games/word_zh.html]《百词斩(bushi)隐私政策》[/url][/color]收集、使用、存储必要的信息。
+2. 我们不会申请开启您的设备权限。
+3. 您可以访问、更正、删除您的个人信息，还可以撤回授权同意、注销账号、投诉举报以及调整其他隐私设置。
+4. 我们已采取符合业界标准的安全防护措施保护您的个人信息。
+5. [color=red]如您是未成年人，请您和您的监护人仔细阅读本隐私政策，并在征得您的监护人授权同意的前提下使用我们的服务或向我们提供个人信息。[/color]
+
+请您阅读完整版[color=blue][url=https://adanelia.github.io/privacy_policy/games/word_zh.html]《百词斩(bushi)用户协议》及《百词斩(bushi)隐私政策》[/url][/color]了解详细信息。
+
+如您同意[color=blue][url=https://adanelia.github.io/privacy_policy/games/word_zh.html]《百词斩(bushi)用户协议》及《百词斩(bushi)隐私政策》[/url][/color]，请您点击“同意”开始使用我们的产品和服务，我们将尽全力保护您的个人信息安全。
+"
+text = "温馨提示
+
+欢迎您使用百词斩(bushi)！我们非常重视保护您的个人信息和隐私。您可以通过《百词斩(bushi)隐私政策》了解我们收集、使用、存储用户个人信息的情况，以及您所享有的相关权利。请您仔细阅读并充分理解相关内容：
+
+1. 为向您提供游戏服务，我们将依据《百词斩(bushi)隐私政策》收集、使用、存储必要的信息。
+2. 我们不会申请开启您的设备权限。
+3. 您可以访问、更正、删除您的个人信息，还可以撤回授权同意、注销账号、投诉举报以及调整其他隐私设置。
+4. 我们已采取符合业界标准的安全防护措施保护您的个人信息。
+5. 如您是未成年人，请您和您的监护人仔细阅读本隐私政策，并在征得您的监护人授权同意的前提下使用我们的服务或向我们提供个人信息。
+
+请您阅读完整版《百词斩(bushi)用户协议》及《百词斩(bushi)隐私政策》了解详细信息。
+
+如您同意《百词斩(bushi)用户协议》及《百词斩(bushi)隐私政策》，请您点击“同意”开始使用我们的产品和服务，我们将尽全力保护您的个人信息安全。
+"
+script = ExtResource( 3 )
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+margin_top = 380.0
+margin_right = 800.0
+margin_bottom = 400.0
+text = "CONFIRM"
+
+[connection signal="meta_clicked" from="VBoxContainer/CenterContainer/RichTextLabel" to="VBoxContainer/CenterContainer/RichTextLabel" method="_on_meta_clicked"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]

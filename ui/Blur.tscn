@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/shaders/blur-x.shader" type="Shader" id=1]
+[ext_resource path="res://ui/shaders/blur-y.shader" type="Shader" id=2]
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = ExtResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=15]
+shader = ExtResource( 2 )
+
+[node name="Blur" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BlurX" type="ColorRect" parent="."]
+material = SubResource( 14 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+copy_mode = 2
+
+[node name="BlurY" type="ColorRect" parent="."]
+material = SubResource( 15 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

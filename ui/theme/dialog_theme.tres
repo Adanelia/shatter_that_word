@@ -1,0 +1,48 @@
+[gd_resource type="Theme" load_steps=11 format=2]
+
+[ext_resource path="res://ui/fonts/JetBrainsMono[wght].ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://ui/fonts/SourceHanSansCN-Medium.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.396078, 0.501961, 0.466667, 0.470588 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.709804, 0.901961, 0.843137, 0.470588 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.972549, 0.898039, 0.819608, 0.666667 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.972549, 0.898039, 0.819608, 0.666667 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.972549, 0.898039, 0.819608, 0.666667 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 1, 0.647059, 0.678431, 0.666667 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 32
+font_data = ExtResource( 1 )
+fallback/0 = ExtResource( 2 )
+
+[resource]
+default_font = SubResource( 10 )
+Button/styles/disabled = SubResource( 12 )
+Button/styles/focus = SubResource( 3 )
+Button/styles/hover = SubResource( 3 )
+Button/styles/normal = SubResource( 3 )
+Button/styles/pressed = SubResource( 3 )
+LineEdit/styles/focus = SubResource( 5 )
+LineEdit/styles/normal = SubResource( 5 )
+LineEdit/styles/read_only = SubResource( 13 )
+OptionButton/styles/disabled = SubResource( 7 )
+OptionButton/styles/focus = SubResource( 7 )
+OptionButton/styles/hover = SubResource( 7 )
+OptionButton/styles/normal = SubResource( 7 )
+OptionButton/styles/pressed = SubResource( 7 )
+Tree/colors/font_color = Color( 1, 1, 1, 1 )
+Tree/styles/bg = SubResource( 8 )
+WindowDialog/styles/panel = SubResource( 9 )

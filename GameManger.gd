@@ -26,33 +26,72 @@ func _ready():
 	$Message/CenterContainer.rect_size = get_viewport_rect().size
 
 
+# 0.1.0版本实现，拖动结束才开始判定
+#func _input(event):
+#	if event is InputEventScreenTouch:
+#		if event.is_pressed():
+#			idx = event.get_index()
+#			start_position = event.position
+##			print("down", event.position)
+#		else:
+#			if idx == event.get_index():
+#				var end_position = event.position
+#				if (end_position - start_position).length() > 100:
+#					$SuperLightning.spawn(start_position, end_position, 0.3)
+#					$SuperLightning.lightning()
+#					AudioManager.play(AudioManager.Sss)
+#					if in_game:
+#						var ray = RayCast2D.new()
+#						add_child(ray)
+#						ray.position = start_position
+#						ray.cast_to = end_position - start_position
+#						ray.force_raycast_update()
+#						yield(get_tree().create_timer(0.2), "timeout")
+#						var obj = ray.get_collider()
+#						if (obj != null) and (obj.has_method("crash")):
+#							AudioManager.play(AudioManager.Explosion)
+#							obj.crash()
+#							hit += 1
+#						ray.queue_free()
+##				print("up", event.position)
+
+
+# 0.1.1版本，应很多玩家的反馈，按下后不停进行判定，可能会有性能问题，或许有更好的办法
 func _input(event):
 	if event is InputEventScreenTouch:
 		if event.is_pressed():
 			idx = event.get_index()
 			start_position = event.position
+#			AudioManager.play_noise(true)
 #			print("down", event.position)
 		else:
 			if idx == event.get_index():
-				var end_position = event.position
-				if (end_position - start_position).length() > 100:
-					$SuperLightning.spawn(start_position, end_position, 0.3)
-					$SuperLightning.lightning()
-					AudioManager.play(AudioManager.Sss)
-					if in_game:
-						var ray = RayCast2D.new()
-						add_child(ray)
-						ray.position = start_position
-						ray.cast_to = end_position - start_position
-						ray.force_raycast_update()
-						yield(get_tree().create_timer(0.2), "timeout")
-						var obj = ray.get_collider()
-						if (obj != null) and (obj.has_method("crash")):
-							AudioManager.play(AudioManager.Explosion)
-							obj.crash()
-							hit += 1
-						ray.queue_free()
+				yield(get_tree().create_timer(0.1), "timeout")
+				AudioManager.play_noise(false)
 #				print("up", event.position)
+	elif event is InputEventScreenDrag:
+		if idx == event.get_index():
+			var end_position = event.position
+			# 忽略微小移动，不然直接爆炸
+			if (end_position - start_position).length() < 20:
+				return
+			$SuperLightning.spawn(start_position, end_position, 0.1)
+			$SuperLightning.lightning()
+			if in_game:
+				var ray = RayCast2D.new()
+				add_child(ray)
+				ray.position = start_position
+				ray.cast_to = end_position - start_position
+				ray.force_raycast_update()
+#				yield(get_tree().create_timer(0.2), "timeout")
+				var obj = ray.get_collider()
+				if (obj != null) and (obj.has_method("crash")):
+					AudioManager.play(AudioManager.Explosion)
+					obj.crash()
+					hit += 1
+				ray.queue_free()
+			AudioManager.play_noise(true)
+			start_position = end_position
 
 
 func _on_start_game(arg):

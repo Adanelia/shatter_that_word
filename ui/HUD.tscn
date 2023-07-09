@@ -45,17 +45,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )
 script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Backgroud" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.64, 0.384, 0.384, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -69,9 +63,6 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 1280.0
@@ -154,7 +145,7 @@ margin_bottom = 720.0
 margin_right = 266.0
 margin_bottom = 33.0
 custom_fonts/font = SubResource( 2 )
-text = "Version: 0.1.0 beta"
+text = "Version: 0.1.1 beta"
 
 [node name="Control" type="Control" parent="VBoxContainer/Bottom"]
 margin_left = 270.0
@@ -418,8 +409,7 @@ mode_overrides_title = false
 mode = 0
 access = 2
 filters = PoolStringArray( "*.txt" )
-current_dir = "/"
-current_path = "/"
+show_hidden_files = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -486,8 +476,9 @@ size_flags_vertical = 3
 custom_fonts/normal_font = SubResource( 17 )
 bbcode_enabled = true
 bbcode_text = "
-[shake rate=5 level=10][indent]感谢大家的游玩！[/indent]
-[rainbow freq=0.2 sat=1 val=1][center]这里是Adanelia工作室[/center]
+[shake rate=2 level=5][indent]感谢大家的游玩！[/indent]
+[indent][url=https://www.taptap.cn/app/231114][color=#0ec8d4]访问Taptap[/color][/url][/indent]
+[rainbow freq=0.1 sat=1 val=1][center]这里是Adanelia工作室[/center]
 [center]……[/center]
 [center]请大家多多支持！[/center]
 [center]*\\(^o^)/*[/center]
@@ -496,6 +487,7 @@ bbcode_text = "
 [right][url=https://adanelia.github.io/privacy_policy/games/word_zh.html]隐私政策[/url] [/right]"
 text = "
 	感谢大家的游玩！
+	访问Taptap
 这里是Adanelia工作室
 ……
 请大家多多支持！

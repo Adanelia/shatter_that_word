@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://ui/HUD.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://sound/click1.ogg" type="AudioStream" id=10]
 [ext_resource path="res://sound/explosion.wav" type="AudioStream" id=11]
 [ext_resource path="res://texture/splash.png" type="Texture" id=12]
+[ext_resource path="res://addons/DrunkBull.SuperLightning/assets/resource/lightning_animation_none.tres" type="Animation" id=13]
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -151,6 +152,8 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 
+[sub_resource type="AudioStreamGenerator" id=6]
+
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
 
@@ -190,6 +193,9 @@ script = ExtResource( 3 )
 
 [node name="SuperLightning" type="Node2D" parent="GameManger"]
 script = ExtResource( 4 )
+LINE_PIXELS_PER_POINT = 5
+LINE_POINTS_FULL_DISPLAY_TIME_PROPORTION = 0.1
+LIGHTNING_ANIMATION = ExtResource( 13 )
 
 [node name="Spawn" type="Timer" parent="GameManger"]
 
@@ -261,6 +267,11 @@ stream = ExtResource( 9 )
 
 [node name="Explosion" type="AudioStreamPlayer" parent="GameManger/AudioManager"]
 stream = ExtResource( 11 )
+volume_db = -6.0
+
+[node name="Noise" type="AudioStreamPlayer" parent="GameManger/AudioManager"]
+stream = SubResource( 6 )
+volume_db = -15.0
 
 [connection signal="end_game" from="HUD" to="GameManger" method="_on_end_game"]
 [connection signal="start_game" from="HUD" to="GameManger" method="_on_start_game"]
